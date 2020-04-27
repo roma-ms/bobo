@@ -5,7 +5,7 @@ pipeline {
             steps {
                 echo 'Hello world!' 
                 sh 'mkdir bobo'
-                sh ' touch /roma/bobo.txt'
+                sh ' touch roma/bobo.txt'
             }
         }
     }
