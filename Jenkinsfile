@@ -5,7 +5,7 @@ pipeline {
             steps {
                 echo 'Hello world!' 
                 sh 'ls -a roma'
-                sh 'cat  bobo/ari.txt'
+                sh 'cat Jenkinsfile'
                 sh 'ls -a '
 		sh 'hostname'
 		sh 'ip addr'
