@@ -5,8 +5,7 @@ pipeline {
             steps {
                 echo 'Hello world!' 
                 sh 'ls -a roma'
-                sh ' touch bobo/ari.txt'
-                sh 'echo "this is new" > bobo/ari.txt'
+                sh 'cat  bobo/ari.txt'
                 sh 'ls -a bobo'
             }
         }
