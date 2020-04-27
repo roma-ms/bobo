@@ -4,8 +4,8 @@ pipeline {
         stage('Stage 1') {
             steps {
                 echo 'Hello world!' 
-                sh 'mkdir roma'
-                sh ' touch bobo.txt'
+                sh 'mkdir bobo'
+                sh ' touch /roma/bobo.txt'
             }
         }
     }
