@@ -4,7 +4,7 @@ pipeline {
         stage('Stage 1') {
             steps {
                 echo 'Hello world!' 
-                sh 'mkdir bobo'
+                sh 'find . type -d -iname "bobo"'
                 sh ' touch roma/bobo.txt'
             }
         }
