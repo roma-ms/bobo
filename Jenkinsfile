@@ -5,6 +5,7 @@ pipeline {
             steps {
                 echo 'Hello world!' 
                 sh 'mkdir roma'
+                sh ' touch bobo.txt'
             }
         }
     }
