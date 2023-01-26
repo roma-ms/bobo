@@ -7,7 +7,7 @@ pipeline {
                 sh 'ls -a roma'
                 sh 'cat Jenkinsfile'
                 sh 'ls -a '
-		sh 'hostname'
+		sh 'hostnames'
 		sh 'ip addr'
             }
         }
