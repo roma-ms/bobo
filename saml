@@ -37,3 +37,5 @@ ddap() {
   # Export this value as it is needed for other applications
   export AWS_SHARED_CREDENTIALS_FILE=$USER_AWS_CREDENTIALS_FILE
 }
+
+aws eks update-kubeconfig --region eu-west-2 --name ddap-dev-eks
