@@ -1,0 +1,4 @@
+saml:
+  sslverification: True
+  idpentryurl: 'https://keycloak.ddap-ops.ice.mod.gov.uk/auth/realms/ddap/protocol/saml/clients/amazon-aws'
+  username: 'YOUR_KEYCLOAK_USERNAME'
