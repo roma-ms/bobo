@@ -2,3 +2,38 @@ saml:
   sslverification: True
   idpentryurl: 'https://keycloak.ddap-ops.ice.mod.gov.uk/auth/realms/ddap/protocol/saml/clients/amazon-aws'
   username: 'YOUR_KEYCLOAK_USERNAME'
+
+
+
+ddap() {
+  DUR=`expr $((${1:-1} * 3600))`
+  awsume --with-saml --role-duration ${DUR}
+
+  mkdir -p $HOME/.aws
+ 
+  # Set the settings folder location.
+  USER_AWS_SETTINGS_FOLDER=$HOME/.aws
+
+  # Create a file to store the temporary credentials on behalf of the user.
+  USER_AWS_CREDENTIALS_FILE=${USER_AWS_SETTINGS_FOLDER}/credentials
+
+  # First check if the file exists - if it does, remove it as we will recreate it
+  [ -f "$USER_AWS_CREDENTIALS_FILE" ] && rm $USER_AWS_CREDENTIALS_FILE
+  touch $USER_AWS_CREDENTIALS_FILE
+
+  # Write these to file
+  echo '[default]' > $USER_AWS_CREDENTIALS_FILE
+  echo "aws_access_key_id=${AWS_ACCESS_KEY_ID}" >> $USER_AWS_CREDENTIALS_FILE
+  echo "aws_secret_access_key=${AWS_SECRET_ACCESS_KEY}" >> $USER_AWS_CREDENTIALS_FILE
+  echo "aws_session_token=${AWS_SESSION_TOKEN}" >> $USER_AWS_CREDENTIALS_FILE
+
+  # Need to remove the environment credentials to stop applications using these over cred file
+  unset -v AWS_ACCESS_KEY_ID
+  unset -v AWS_SECRET_ACCESS_KEY
+  unset -v AWS_SESSION_TOKEN
+
+  chmod a+r ${USER_AWS_CREDENTIALS_FILE}
+
+  # Export this value as it is needed for other applications
+  export AWS_SHARED_CREDENTIALS_FILE=$USER_AWS_CREDENTIALS_FILE
+}
